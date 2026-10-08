@@ -1,0 +1,80 @@
+.hero {
+  padding: 3.5rem 0;
+  text-align: center;
+  background: linear-gradient(135deg, var(--ifm-color-primary-darkest), var(--ifm-color-primary));
+  color: #fff;
+}
+
+.heroTitle {
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: #fff;
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.heroMeta {
+  opacity: 0.9;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-card-border-radius, 0.75rem);
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-2px);
+}
+
+.emoji {
+  font-size: 1.75rem;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.cardText {
+  color: var(--ifm-color-emphasis-700);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+  .card:hover,
+  .card:focus-visible {
+    transform: none;
+  }
+}

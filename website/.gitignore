@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+
+# Docusaurus build output & cache
+build/
+.docusaurus/
+.cache-loader/
+
+# Playwright
+test-results/
+playwright-report/

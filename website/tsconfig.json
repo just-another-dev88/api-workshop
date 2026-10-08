@@ -1,0 +1,10 @@
+{
+  "extends": "@docusaurus/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strict": true,
+    "allowJs": true,
+    "checkJs": false
+  },
+  "exclude": [".docusaurus", "build", "node_modules", "test-results", "playwright-report"]
+}
