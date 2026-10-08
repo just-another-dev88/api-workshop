@@ -3,6 +3,8 @@
 Materials for a **3-hour, beginner-friendly workshop** on APIs, API security and DevOps.
 Designed for a **mixed audience**: non-tech, beginners and developers in the same room.
 
+📖 **Read it online (phone or laptop):** <https://just-another-dev88.github.io/api-workshop/>
+
 ## 🎯 Goals
 
 By the end, participants can:
@@ -23,6 +25,8 @@ By the end, participants can:
 | [docs/modules/](docs/modules/) | Both | Six modules – the actual content |
 | [demo/](demo/) | Both | FastAPI + SQLite Todo API |
 | [.github/workflows/ci.yml](.github/workflows/ci.yml) | Techy | Real CI pipeline used in Module 6 |
+| [website/](website/) | Maintainers | Docusaurus site that publishes `docs/` to GitHub Pages |
+| [.github/workflows/docs.yml](.github/workflows/docs.yml) | Maintainers | Builds, tests and deploys the docs site |
 
 ### Modules
 
@@ -55,3 +59,22 @@ uvicorn app.main:app --reload
 ```
 
 See [demo/README.md](demo/README.md) for details, tests and Docker.
+
+## 🌐 Docs website (GitHub Pages)
+
+The markdown in [docs/](docs/) is published as a mobile-friendly site with [Docusaurus](https://docusaurus.io).
+The site lives in [website/](website/) and reads `docs/` directly, so **edit the markdown as usual**.
+
+```powershell
+cd website
+npm install
+npm start            # live preview at http://localhost:3000/api-workshop/
+npm test             # unit tests (link-rewriting plugin)
+npm run build        # production build – fails on broken links
+npm run test:e2e     # Playwright smoke tests, desktop + mobile (after build)
+```
+
+[.github/workflows/docs.yml](.github/workflows/docs.yml) builds and tests the site on every change to `docs/` or `website/`,
+and **deploys to GitHub Pages on push to `main`**.
+
+> One-time setup: repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.

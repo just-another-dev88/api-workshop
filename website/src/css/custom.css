@@ -1,0 +1,41 @@
+/* Global theme overrides - see https://docusaurus.io/docs/styling-layout */
+:root {
+  --ifm-color-primary: #2e6ae6;
+  --ifm-color-primary-dark: #1d5bdc;
+  --ifm-color-primary-darker: #1c56cf;
+  --ifm-color-primary-darkest: #1747aa;
+  --ifm-color-primary-light: #4a7ee9;
+  --ifm-color-primary-lighter: #5888ea;
+  --ifm-color-primary-lightest: #81a5f0;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #6b9bff;
+  --ifm-color-primary-dark: #4a84ff;
+  --ifm-color-primary-darker: #3a79ff;
+  --ifm-color-primary-darkest: #0a58ff;
+  --ifm-color-primary-light: #8cb2ff;
+  --ifm-color-primary-lighter: #9cbdff;
+  --ifm-color-primary-lightest: #cdddff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Wide workshop tables: scroll sideways on phones instead of squashing text */
+.markdown table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mermaid diagrams: never overflow the viewport */
+.docusaurus-mermaid-container {
+  overflow-x: auto;
+}
+
+/* Collapsible answers in the handout */
+.markdown details {
+  margin-bottom: 1rem;
+}
