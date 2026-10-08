@@ -1,117 +1,116 @@
-# 📄 Audience Handout – APIs, Security & DevOps
+# 📄 Audience Handout – DevSecOps, API Security & Cloud Integration
 
-## ⚡ Cheat sheet – the 6 big ideas
+## ⚡ Cheat Sheet – The 4 Big Pillars
 
-| # | Idea | In one sentence |
+| # | Pillar | In One Sentence |
 |---|---|---|
-| 1 | **What is an API?** | A *waiter* that carries requests from one app to another and brings back answers. |
-| 2 | **APIs in daily life** | Every app you use is many services connected by APIs – maps, payments, logins, messages. |
-| 3 | **Society & economy** | APIs are *digital roads*: built once, they let others create new services, jobs and transparency. |
-| 4 | **Building an API** | With Python + FastAPI, a working API with a database takes about 100 lines. |
-| 5 | **Security** | Keys, permission checks, input checks, rate limits, encryption and monitoring keep APIs safe. |
-| 6 | **DevOps** | An automated *assembly line* tests, packages and ships code safely and often. |
+| 1 | **API Essentials** | An API is a *waiter* that takes structured requests (HTTP + JSON) between clients and servers. |
+| 2 | **DevSecOps** | An automated *assembly line* that catches code flaws, vulnerable dependencies, and leaked secrets before merge. |
+| 3 | **API Security** | Defense-in-depth: strict schema validation, constant-time auth, object ownership checks (BOLA), and rate limits. |
+| 4 | **Cloud Integration** | Modern cloud-native design: perimeter API Gateways, least-privilege IAM, runtime secrets managers, and hardened containers. |
 
-## 🍽️ The restaurant analogy
+---
+
+## 🍽️ The Restaurant Analogy
 
 ```
-  You (app)  ──order──▶  Waiter (API)  ──▶  Kitchen (server/database)
-             ◀──food───                ◀──
+  Customer (App)  ──1. Order (Request)──▶  Waiter (API)  ──▶  Kitchen (Server & DB)
+                  ◀──2. Food (Response)──                 ◀──
 ```
 
-## 🔤 HTTP methods
+## 🔤 HTTP Methods & Status Codes
 
-| Say | Method |
+| Method | Plain Meaning |
 |---|---|
-| Show me | `GET` |
-| Add | `POST` |
-| Change | `PATCH` / `PUT` |
-| Remove | `DELETE` |
+| `GET` | "Show me" (read data) |
+| `POST` | "Create this" (insert new data) |
+| `PATCH` / `PUT` | "Change this" (modify existing data) |
+| `DELETE` | "Remove this" (delete data) |
 
-## 🚦 Status codes
-
-| Code | Meaning |
+| Status Code | Meaning |
 |---|---|
-| `200` / `201` / `204` | Success / Created / Done, nothing to show |
-| `400` / `422` | Your request is wrong |
-| `401` | Who are you? (no / bad key) |
-| `403` | I know you, but you're not allowed |
-| `404` | Not found |
-| `429` | Too many requests – slow down |
-| `500` | Server's fault |
+| `200` / `201` | Success / Resource Created |
+| `400` / `422` | Client Error: Request malformed or schema invalid |
+| `401` | Unauthorized: Missing or invalid credentials |
+| `403` | Forbidden: Authenticated, but access denied |
+| `404` | Not Found: Resource or route does not exist |
+| `429` | Too Many Requests: Rate limit tripped—back off |
+| `500` | Server Error: Unhandled backend exception |
+
+---
+
+## 🛡️ The DevSecOps Security Gates
+
+1. **Pre-commit / Linters:** Instant feedback on syntax and dangerous patterns inside your editor.
+2. **SAST (Static Analysis):** Scans code without executing it for bugs and security flaws (e.g. Ruff with Bandit rules).
+3. **SCA (Dependency Audit):** Flags known CVEs in third-party libraries (e.g. `pip-audit`, `npm audit`).
+4. **Secret Scanning:** Halts commits containing hardcoded API keys or private tokens (e.g. Gitleaks).
+5. **DAST & Smoke Testing:** Exercises the running application and container image in staging/CI.
+
+---
+
+## ☁️ The Modern Cloud-Native API Stack
+
+```
+User App ──▶ API Gateway ──▶ Hardened Container (ECS / Cloud Run) ──▶ Managed Database
+               │                        │
+               ▼                        ▼
+        Edge TLS & Quotas        Cloud Secrets Manager (IAM Roles)
+```
+
+- **API Gateway:** Centralized edge routing, TLS termination, API key quotas, and DDoS shielding.
+- **Workload Identity:** Temporary, short-lived IAM credentials instead of static keys.
+- **Secrets Manager:** Secure key/password storage injected at startup with automatic rotation.
 
 ---
 
 ## 📖 Glossary
 
-| Term | Plain meaning |
+| Term | Plain Meaning |
 |---|---|
-| **API** | Application Programming Interface – rules that let software talk to other software |
-| **Client** | The app making the request (phone app, website, script) |
-| **Server** | The computer that receives requests and sends responses |
-| **Endpoint** | A specific address on an API, e.g. `/todos` |
-| **Request / Response** | The question sent to the API / the answer it sends back |
-| **HTTP / HTTPS** | The language of the web / the encrypted (🔒 safe) version |
-| **JSON** | A simple text format for data: `{"name": "Ana", "age": 30}` |
-| **REST** | A popular style of API using URLs and HTTP methods |
-| **CRUD** | Create, Read, Update, Delete – the four basic data actions |
-| **Database** | Organised storage for data. **SQLite** is a tiny one stored in a single file |
-| **FastAPI** | A Python toolkit for building APIs quickly |
-| **Swagger UI / OpenAPI** | An auto-generated, clickable "menu" for trying an API in the browser |
-| **API key** | A secret code that identifies an app calling an API |
-| **Authentication** | Proving *who* you are |
-| **Authorization** | Deciding *what* you're allowed to do |
-| **Validation** | Checking incoming data is correct and safe |
-| **Rate limiting** | Capping how many requests a client can make in a time window |
-| **SQL injection** | An attack that sneaks database commands into input fields |
-| **OWASP** | Non-profit that publishes the most common security risks |
-| **Webhook** | When an API calls *you* to say something happened |
-| **Open data / Open banking** | Organisations sharing data via APIs for public or customer benefit |
-| **Git** | A tool that saves every version of code (a time machine) |
-| **Branch / Pull Request** | A separate line of work / a request to review and merge it |
-| **CI/CD** | Continuous Integration / Delivery – automatic testing and releasing |
-| **Container / Docker** | A sealed "box" with an app and everything it needs, runs the same everywhere |
-| **DevOps / DevSecOps** | Developers and operations working as one team with automation (plus built-in security) |
-| **Deploy** | Putting an app online for people to use |
+| **API** | Application Programming Interface – rules allowing different apps to communicate |
+| **Endpoint** | A specific URL where an API receives requests (e.g. `/todos`) |
+| **JSON** | Lightweight text format for exchanging structured data (`{"key": "value"}`) |
+| **DevSecOps** | Integrating automated security validations throughout the DevOps pipeline |
+| **Shift Left** | Moving security and testing earlier in the software development lifecycle |
+| **SAST** | Static Application Security Testing – scanning source code for vulnerabilities |
+| **SCA** | Software Composition Analysis – detecting CVEs in open-source dependencies |
+| **BOLA / IDOR** | Broken Object Level Authorization – accessing another user's data by guessing an ID |
+| **Mass Assignment** | Exploit where client sends unauthorized fields (e.g. `is_admin=true`) into database |
+| **Rate Limiting** | Restricting the number of requests a client can make in a given timeframe |
+| **API Gateway** | Entry point managing traffic, security policies, and routing for backend services |
+| **Cloud IAM** | Identity & Access Management – controls who or what can perform actions in the cloud |
+| **Secrets Manager** | Cloud service for securely storing and rotating passwords and API credentials |
 
 ---
 
-## 🧠 Quiz
+## 🧠 Quick Quiz
 
-1. In the restaurant analogy, what is the API?
-   a) The kitchen  b) The waiter  c) The menu
-2. Which HTTP method adds something new?
-   a) GET  b) POST  c) DELETE
-3. You get a `401` response. What's wrong?
-   a) The server crashed  b) The item doesn't exist  c) You didn't prove who you are
-4. Why doesn't a ride-hailing app build its own maps?
-   a) It's illegal  b) Reusing a maps API is faster and cheaper  c) Maps aren't needed
-5. What does rate limiting protect against?
-   a) Floods of requests  b) Typos  c) Slow internet
-6. Where should you **never** put an API key?
-   a) In an environment variable  b) In your code on GitHub  c) In a secret manager
-7. What does CI do?
-   a) Designs the app's logo  b) Automatically tests every code change  c) Deletes old code
-8. What problem do containers solve?
-   a) "It works on my machine" but not elsewhere  b) Slow typing  c) Expensive laptops
+1. **In the restaurant analogy, what does the waiter represent?**
+2. **Why is fixing a security flaw in production 100x more costly than in the IDE?**
+3. **What is the difference between SAST and SCA?**
+4. **If a user changes their profile ID in the URL to view another person's private order, what vulnerability is this?**
+5. **Why should an API return generic 500 error messages instead of full database stack traces?**
+6. **Why should cloud applications use IAM Roles instead of hardcoding AWS access keys in config files?**
 
 <details>
-<summary>Answers</summary>
+<summary>Click to view answers</summary>
 
-1-b · 2-b · 3-c · 4-b · 5-a · 6-b · 7-b · 8-a
+1. The API (Application Programming Interface).
+2. Production fixes involve potential security breaches, downtime, customer communication, emergency patches, and regulatory impact, whereas IDE fixes take seconds.
+3. SAST scans the custom source code you wrote; SCA scans third-party open-source libraries and dependencies.
+4. BOLA (Broken Object Level Authorization), also known as IDOR.
+5. Stack traces leak internal table structures, software versions, and query syntax to potential attackers.
+6. IAM Roles use temporary, automatically rotated credentials with least-privilege permissions, eliminating static credentials that could leak in git or container images.
+
 </details>
 
 ---
 
-## 🚀 Keep learning
+## 🔗 Further Learning Resources
 
-| Level | Resource |
-|---|---|
-| 🟢 | Play with public APIs in your browser: <https://github.com/public-apis/public-apis> |
-| 🟢 | No-code API automation: Zapier, Make, n8n |
-| 🟡 | Try APIs without code: Postman, Hoppscotch (<https://hoppscotch.io>) |
-| 🟡 | MDN – HTTP overview: <https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview> |
-| 🔴 | FastAPI tutorial: <https://fastapi.tiangolo.com/tutorial/> |
-| 🔴 | OWASP API Security Top 10: <https://owasp.org/API-Security/> |
-| 🔴 | GitHub Actions docs: <https://docs.github.com/actions> |
-| 🔴 | Docker getting started: <https://docs.docker.com/get-started/> |
-| All | This workshop's demo code: see `demo/README.md` in the repo |
+- [OWASP API Security Top 10](https://owasp.org/API-Security/)
+- [FastAPI Documentation](https://fastapi.tiangolo.com/)
+- [GitHub Actions Security Best Practices](https://docs.github.com/en/actions/security-guides)
+- [AWS API Gateway Architectural Guide](https://docs.aws.amazon.com/apigateway/)
+- [Public APIs Directory](https://github.com/public-apis/public-apis)
