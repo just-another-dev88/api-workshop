@@ -13,18 +13,16 @@ interface Card {
 }
 
 const START_HERE: readonly Card[] = [
-  { emoji: '🗓️', title: 'Agenda', description: 'The 3-hour timetable at a glance.', to: '/docs/agenda' },
-  { emoji: '📄', title: 'Audience handout', description: 'Cheat sheet, glossary, quiz and further learning.', to: '/docs/audience-handout' },
-  { emoji: '🎤', title: 'Facilitator guide', description: 'Script, timings, setup checklist and FAQs.', to: '/docs/facilitator-guide' },
+  { emoji: '🗓️', title: 'Agenda', description: 'The 3-hour timetable and 90-minute fast-track.', to: '/docs/agenda' },
+  { emoji: '📄', title: 'Audience handout', description: 'Cheat sheet, glossary, quiz, and cloud best practices.', to: '/docs/audience-handout' },
+  { emoji: '🎤', title: 'Facilitator guide', description: 'Script, timings, setup checklist, and live attack tips.', to: '/docs/facilitator-guide' },
 ];
 
 const MODULES: readonly Card[] = [
-  { emoji: '🍽️', title: '1 · What is an API?', description: 'An API is a waiter between apps.', to: '/docs/modules/what-is-an-api' },
-  { emoji: '📱', title: '2 · APIs in daily life', description: 'One app = many APIs working together.', to: '/docs/modules/apis-in-daily-life' },
-  { emoji: '🌍', title: '3 · Society & economy', description: 'How APIs create services, jobs and transparency.', to: '/docs/modules/apis-for-society-and-economy' },
-  { emoji: '🛠️', title: "4 · Let's build an API", description: 'A real Todo API you can try in the browser.', to: '/docs/modules/building-an-api' },
-  { emoji: '🔐', title: '5 · API security', description: 'Keys, checks, limits and locks.', to: '/docs/modules/api-security' },
-  { emoji: '🚀', title: '6 · DevOps basics', description: 'The assembly line from laptop to internet.', to: '/docs/modules/devops-basics' },
+  { emoji: '🍽️', title: '1 · API Essentials & Demo', description: 'The waiter analogy, HTTP verbs, JSON, status codes, and Swagger UI.', to: '/docs/modules/api-fundamentals' },
+  { emoji: '🛡️', title: '2 · DevSecOps & Shift Left', description: 'Automating SAST, SCA, and secret scanning into the CI assembly line.', to: '/docs/modules/introduction-to-devsecops' },
+  { emoji: '🔐', title: '3 · API Security Deep Dive', description: 'OWASP Top 10, BOLA, mass assignment, constant-time auth, and rate limits.', to: '/docs/modules/api-security' },
+  { emoji: '☁️', title: '4 · Cloud Integration', description: 'API Gateways, Cloud IAM, Secrets Manager, and containerized deployment.', to: '/docs/modules/cloud-integration' },
 ];
 
 function CardGrid({ cards }: { cards: readonly Card[] }): ReactNode {
@@ -55,7 +53,7 @@ export default function Home(): ReactNode {
             🔌 {siteConfig.title}
           </Heading>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <p className={styles.heroMeta}>3 hours · beginner-friendly · APIs, security &amp; DevOps</p>
+          <p className={styles.heroMeta}>3 hours · DevSecOps · API Security · Cloud Integration</p>
           <div className={styles.buttons}>
             <Link className="button button--primary button--lg" to="/docs/agenda">
               Start the workshop

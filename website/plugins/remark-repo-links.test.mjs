@@ -19,6 +19,11 @@ test('rewrites links to source files outside docs into GitHub blob URLs', () => 
     rewriteRepoLink('../../demo/app/main.py', moduleFile, opts),
     'https://github.com/owner/repo/blob/main/demo/app/main.py',
   );
+  const guideFile = path.join(repoRoot, 'docs', 'facilitator-guide.md');
+  assert.equal(
+    rewriteRepoLink('../.github/workflows/ci.yml', guideFile, opts),
+    'https://github.com/owner/repo/blob/main/.github/workflows/ci.yml',
+  );
 });
 
 test('keeps the #hash fragment', () => {
