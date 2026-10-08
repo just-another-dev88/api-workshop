@@ -24,10 +24,9 @@ class SitePage {
 }
 
 const MODULES = [
-  { slug: 'modules/api-fundamentals', title: /Module 1/ },
-  { slug: 'modules/introduction-to-devsecops', title: /Module 2/ },
-  { slug: 'modules/api-security', title: /Module 3/ },
-  { slug: 'modules/cloud-integration', title: /Module 4/ },
+  { slug: 'modules/devsecops', title: /Module 1/ },
+  { slug: 'modules/api-security', title: /Module 2/ },
+  { slug: 'modules/cloud-integration', title: /Module 3/ },
 ];
 
 test('home page shows the workshop and links to every module', async ({ page }) => {
@@ -35,7 +34,7 @@ test('home page shows the workshop and links to every module', async ({ page }) 
   await site.gotoHome();
   await expect(site.heading(/API Workshop/)).toBeVisible();
   await expect(page.getByRole('link', { name: /Start the workshop/ })).toBeVisible();
-  for (const label of ['API Essentials', 'DevSecOps', 'API Security', 'Cloud Integration']) {
+  for (const label of ['DevSecOps', 'API Security', 'Cloud Integration']) {
     await expect(page.getByRole('main').getByRole('link', { name: new RegExp(label) })).toBeVisible();
   }
 });
@@ -63,15 +62,15 @@ test('navigation menu reaches the handout (hamburger on mobile)', async ({ page 
   await expect(site.heading(/Audience Handout/)).toBeVisible();
 });
 
-test('Module 2 renders its Mermaid DevSecOps diagram', async ({ page }) => {
+test('Module 1 renders its Mermaid DevSecOps diagram', async ({ page }) => {
   const site = new SitePage(page);
-  await site.gotoDoc('modules/introduction-to-devsecops');
+  await site.gotoDoc('modules/devsecops');
   const diagrams = page.locator('.docusaurus-mermaid-container svg');
   await expect(diagrams.first()).toBeVisible();
   await expect(diagrams.first().getByText(/Developer Push/)).toBeVisible();
 });
 
-test('Module 4 renders its Mermaid Cloud architecture diagram', async ({ page }) => {
+test('Module 3 renders its Mermaid Cloud architecture diagram', async ({ page }) => {
   const site = new SitePage(page);
   await site.gotoDoc('modules/cloud-integration');
   const diagrams = page.locator('.docusaurus-mermaid-container svg');

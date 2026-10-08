@@ -1,6 +1,5 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
-// Doc ids drop the numeric prefix: docs/modules/01-api-fundamentals.md -> modules/api-fundamentals
 const sidebars: SidebarsConfig = {
   workshop: [
     {
@@ -8,7 +7,7 @@ const sidebars: SidebarsConfig = {
       label: 'Start here',
       collapsible: false,
       items: [
-        { type: 'doc', id: 'agenda', label: '🗓️ Agenda' },
+        { type: 'doc', id: 'agenda', label: '🗓️ Agenda (2 Hours)' },
         { type: 'doc', id: 'audience-handout', label: '📄 Audience handout' },
         { type: 'doc', id: 'facilitator-guide', label: '🎤 Facilitator guide' },
       ],
@@ -18,10 +17,9 @@ const sidebars: SidebarsConfig = {
       label: 'Modules',
       collapsible: false,
       items: [
-        { type: 'doc', id: 'modules/api-fundamentals', label: '1 · API essentials & demo' },
-        { type: 'doc', id: 'modules/introduction-to-devsecops', label: '2 · DevSecOps & Shift Left' },
-        { type: 'doc', id: 'modules/api-security', label: '3 · API security deep dive' },
-        { type: 'doc', id: 'modules/cloud-integration', label: '4 · Cloud integration' },
+        { type: 'doc', id: 'modules/devsecops', label: '1 · DevSecOps (30 min)' },
+        { type: 'doc', id: 'modules/api-security', label: '2 · API Security (45 min)' },
+        { type: 'doc', id: 'modules/cloud-integration', label: '3 · Cloud Integration (45 min)' },
       ],
     },
   ],

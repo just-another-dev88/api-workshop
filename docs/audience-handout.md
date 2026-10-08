@@ -1,24 +1,23 @@
 # 📄 Audience Handout – DevSecOps, API Security & Cloud Integration
 
-## ⚡ Cheat Sheet – The 4 Big Pillars
+## ⚡ Cheat Sheet – The 3 Core Pillars
 
 | # | Pillar | In One Sentence |
 |---|---|---|
-| 1 | **API Essentials** | An API is a *waiter* that takes structured requests (HTTP + JSON) between clients and servers. |
-| 2 | **DevSecOps** | An automated *assembly line* that catches code flaws, vulnerable dependencies, and leaked secrets before merge. |
-| 3 | **API Security** | Defense-in-depth: strict schema validation, constant-time auth, object ownership checks (BOLA), and rate limits. |
-| 4 | **Cloud Integration** | Modern cloud-native design: perimeter API Gateways, least-privilege IAM, runtime secrets managers, and hardened containers. |
+| 1 | **DevSecOps** | An automated *assembly line* that catches code flaws, vulnerable dependencies, and leaked secrets on every commit. |
+| 2 | **API Security** | Defense-in-depth: strict schema validation, constant-time auth, object ownership checks (BOLA), and rate limits. |
+| 3 | **Cloud Integration** | Modern cloud-native design: perimeter API Gateways, least-privilege IAM, runtime secrets managers, and hardened containers. |
 
 ---
 
-## 🍽️ The Restaurant Analogy
+## 🍽️ The API Refresher
 
 ```
   Customer (App)  ──1. Order (Request)──▶  Waiter (API)  ──▶  Kitchen (Server & DB)
                   ◀──2. Food (Response)──                 ◀──
 ```
 
-## 🔤 HTTP Methods & Status Codes
+### HTTP Methods & Status Codes
 
 | Method | Plain Meaning |
 |---|---|
@@ -69,14 +68,12 @@ User App ──▶ API Gateway ──▶ Hardened Container (ECS / Cloud Run) �
 | Term | Plain Meaning |
 |---|---|
 | **API** | Application Programming Interface – rules allowing different apps to communicate |
-| **Endpoint** | A specific URL where an API receives requests (e.g. `/todos`) |
-| **JSON** | Lightweight text format for exchanging structured data (`{"key": "value"}`) |
 | **DevSecOps** | Integrating automated security validations throughout the DevOps pipeline |
 | **Shift Left** | Moving security and testing earlier in the software development lifecycle |
 | **SAST** | Static Application Security Testing – scanning source code for vulnerabilities |
 | **SCA** | Software Composition Analysis – detecting CVEs in open-source dependencies |
 | **BOLA / IDOR** | Broken Object Level Authorization – accessing another user's data by guessing an ID |
-| **Mass Assignment** | Exploit where client sends unauthorized fields (e.g. `is_admin=true`) into database |
+| **Mass Assignment** | Exploit where client sends unauthorized fields (e.g. `role=admin`) into database |
 | **Rate Limiting** | Restricting the number of requests a client can make in a given timeframe |
 | **API Gateway** | Entry point managing traffic, security policies, and routing for backend services |
 | **Cloud IAM** | Identity & Access Management – controls who or what can perform actions in the cloud |
@@ -86,22 +83,20 @@ User App ──▶ API Gateway ──▶ Hardened Container (ECS / Cloud Run) �
 
 ## 🧠 Quick Quiz
 
-1. **In the restaurant analogy, what does the waiter represent?**
-2. **Why is fixing a security flaw in production 100x more costly than in the IDE?**
-3. **What is the difference between SAST and SCA?**
-4. **If a user changes their profile ID in the URL to view another person's private order, what vulnerability is this?**
-5. **Why should an API return generic 500 error messages instead of full database stack traces?**
-6. **Why should cloud applications use IAM Roles instead of hardcoding AWS access keys in config files?**
+1. **Why is fixing a security flaw in production 100x more costly than in the IDE?**
+2. **What is the difference between SAST and SCA?**
+3. **If an authenticated user changes an order ID in the URL to view someone else's order, what flaw is this?**
+4. **Why should an API return generic 500 error messages instead of full database stack traces?**
+5. **Why should cloud applications use IAM Roles instead of hardcoding AWS access keys in config files?**
 
 <details>
 <summary>Click to view answers</summary>
 
-1. The API (Application Programming Interface).
-2. Production fixes involve potential security breaches, downtime, customer communication, emergency patches, and regulatory impact, whereas IDE fixes take seconds.
-3. SAST scans the custom source code you wrote; SCA scans third-party open-source libraries and dependencies.
-4. BOLA (Broken Object Level Authorization), also known as IDOR.
-5. Stack traces leak internal table structures, software versions, and query syntax to potential attackers.
-6. IAM Roles use temporary, automatically rotated credentials with least-privilege permissions, eliminating static credentials that could leak in git or container images.
+1. Production fixes involve potential security breaches, downtime, customer communication, emergency patches, and regulatory impact, whereas IDE fixes take seconds.
+2. SAST scans the custom source code you wrote; SCA scans third-party open-source libraries and dependencies.
+3. BOLA (Broken Object Level Authorization), also known as IDOR.
+4. Stack traces leak internal table structures, software versions, and query syntax to potential attackers.
+5. IAM Roles use temporary, automatically rotated credentials with least-privilege permissions, eliminating static credentials that could leak in git or container images.
 
 </details>
 
@@ -113,4 +108,3 @@ User App ──▶ API Gateway ──▶ Hardened Container (ECS / Cloud Run) �
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [GitHub Actions Security Best Practices](https://docs.github.com/en/actions/security-guides)
 - [AWS API Gateway Architectural Guide](https://docs.aws.amazon.com/apigateway/)
-- [Public APIs Directory](https://github.com/public-apis/public-apis)

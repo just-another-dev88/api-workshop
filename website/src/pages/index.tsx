@@ -13,16 +13,15 @@ interface Card {
 }
 
 const START_HERE: readonly Card[] = [
-  { emoji: '🗓️', title: 'Agenda', description: 'The 3-hour timetable and 90-minute fast-track.', to: '/docs/agenda' },
+  { emoji: '🗓️', title: 'Agenda (2 Hours)', description: 'The 2-hour timetable and fast-track breakdown.', to: '/docs/agenda' },
   { emoji: '📄', title: 'Audience handout', description: 'Cheat sheet, glossary, quiz, and cloud best practices.', to: '/docs/audience-handout' },
   { emoji: '🎤', title: 'Facilitator guide', description: 'Script, timings, setup checklist, and live attack tips.', to: '/docs/facilitator-guide' },
 ];
 
 const MODULES: readonly Card[] = [
-  { emoji: '🍽️', title: '1 · API Essentials & Demo', description: 'The waiter analogy, HTTP verbs, JSON, status codes, and Swagger UI.', to: '/docs/modules/api-fundamentals' },
-  { emoji: '🛡️', title: '2 · DevSecOps & Shift Left', description: 'Automating SAST, SCA, and secret scanning into the CI assembly line.', to: '/docs/modules/introduction-to-devsecops' },
-  { emoji: '🔐', title: '3 · API Security Deep Dive', description: 'OWASP Top 10, BOLA, mass assignment, constant-time auth, and rate limits.', to: '/docs/modules/api-security' },
-  { emoji: '☁️', title: '4 · Cloud Integration', description: 'API Gateways, Cloud IAM, Secrets Manager, and containerized deployment.', to: '/docs/modules/cloud-integration' },
+  { emoji: '🛡️', title: '1 · DevSecOps (30 min)', description: 'Automating SAST, SCA, and secret scanning into the CI assembly line.', to: '/docs/modules/devsecops' },
+  { emoji: '🔐', title: '2 · API Security (45 min)', description: 'OWASP Top 10, BOLA, mass assignment, constant-time auth, and rate limits.', to: '/docs/modules/api-security' },
+  { emoji: '☁️', title: '3 · Cloud Integration (45 min)', description: 'API Gateways, Cloud IAM, Secrets Manager, and containerized deployment.', to: '/docs/modules/cloud-integration' },
 ];
 
 function CardGrid({ cards }: { cards: readonly Card[] }): ReactNode {
@@ -53,7 +52,7 @@ export default function Home(): ReactNode {
             🔌 {siteConfig.title}
           </Heading>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
-          <p className={styles.heroMeta}>3 hours · DevSecOps · API Security · Cloud Integration</p>
+          <p className={styles.heroMeta}>2 hours · DevSecOps · API Security · Cloud Integration</p>
           <div className={styles.buttons}>
             <Link className="button button--primary button--lg" to="/docs/agenda">
               Start the workshop
